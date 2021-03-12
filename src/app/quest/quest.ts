@@ -1,10 +1,12 @@
 export interface Quest {
-  //index: number;
+  index: number;
   title: string;
-  status: string;
+  status: boolean;
   difficulty: string;
   members: boolean;
+  length: string;
   questPoints: number;
   userEligible: boolean;
+  series: string;
 }
 //{"title":"A Shadow over Ashdale","status":"COMPLETED","difficulty":0,"members":false,"questPoints":1,"userEligible":true}

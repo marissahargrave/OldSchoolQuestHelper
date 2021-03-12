@@ -1,12 +1,4 @@
-// .quests tr:hover{
-//     background-color: #CCC;
-// }
 
-//.quests{
-//    table-layout: fixed;
-//    //width: 100%;
-//     border-collapse:collapse;
-// }
 
 // Import library functions for theme creation.
 @import '~@angular/material/theming';
@@ -52,5 +44,15 @@
     }
     @if $typography != null {
         @include questlist-typography($typography);
+    }
+
+    .quests tr:hover{
+        background-color: #CCC;
+    }
+
+    .quests{
+      table-layout: fixed;
+      width: 100%;
+        border-collapse:collapse;
     }
 }
