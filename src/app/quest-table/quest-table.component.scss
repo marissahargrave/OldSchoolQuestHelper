@@ -1,9 +1,7 @@
-
-
 // Import library functions for theme creation.
 @import '~@angular/material/theming';
 
-@mixin questlist-color($RunescapeQuestHelper-theme) {
+@mixin quest-table-color($RunescapeQuestHelper-theme) {
   // Extract the color configuration in case a theme has been passed.
   // This allows consumers to either pass a theme object or a color configuration.
   $config: mat-get-color-config($RunescapeQuestHelper-theme);
@@ -12,6 +10,10 @@
   $accent: map-get($config, accent);
 
   // Define any styles affected by the theme.
+  .full-width-table {
+    width: 100%;
+  }
+
   .quests {
     // Use mat-color to extract individual colors from a palette.
     background-color: mat-color($primary);
@@ -19,7 +21,7 @@
   }
 }
 
-@mixin questlist-typography($RunescapeQuestHelper-theme) {
+@mixin quest-table-typography($RunescapeQuestHelper-theme) {
     // Extract the typography configuration in case a theme has been passed.
     $config: mat-get-typography-config($RunescapeQuestHelper-theme);
   
@@ -32,7 +34,7 @@
     }
   }
 
-@mixin questlist-theme($theme) {
+@mixin quest-table-theme($theme) {
     // Extracts the color and typography configurations from the theme.
     $color: mat-get-color-config($theme);
     $typography: mat-get-typography-config($theme);
@@ -40,19 +42,19 @@
     // Do not generate styles if configurations for individual theming
     // systems have been explicitly set to `null`.
     @if $color != null {
-        @include questlist-color($color); 
+        @include quest-table-color($color); 
     }
     @if $typography != null {
-        @include questlist-typography($typography);
+        @include quest-table-typography($typography);
     }
 
-    .quests tr:hover{
-        background-color: #CCC;
-    }
+    // .quests tr:hover{
+    //     background-color: #CCC;
+    // }
 
-    .quests{
-      table-layout: fixed;
-      width: 100%;
-        border-collapse:collapse;
-    }
+    // .quests{
+    //   table-layout: fixed;
+    //   width: 100%;
+    //     border-collapse:collapse;
+    // }
 }

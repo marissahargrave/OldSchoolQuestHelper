@@ -2,18 +2,56 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
-@import 'app/questlist/questlist.component.scss';
+@import 'app/quest-table/quest-table.component.scss';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+$RunescapeQuestHelper-typography: mat-typography-config(
+	$font-family: 'Montserrat, sans-serif'
+	
+);
+@include mat-core($RunescapeQuestHelper-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$RunescapeQuestHelper-primary: mat-palette($mat-indigo);
+$RunescapeQuestHelper-primary: (
+	'50': 'e9e7e2',
+	'100': 'c7c3b6',
+	'200': 'a29b85',
+	'300': '7d7354',
+	'400': '615530',
+	'500': '45370b',
+	'600': '3e310a',
+	'700': '362a08',
+	'800': '2e2306',
+	'900': '1f1603',
+	'A100': 'ffc05c',
+	'A200': 'ffac29',
+	'A400': 'f59600',
+	'A700': 'db8600',
+	'contrastDefaultColor': 'light',
+	'contrastDarkColors': (
+	  '50',
+	  '100',
+	  '200',
+	  'A100',
+	  'A200',
+	  'A400',
+	  'A700'
+	),
+	'contrastLightColors': (
+	  '300',
+	  '400',
+	  '500',
+	  '600',
+	  '700',
+	  '800',
+	  '900'
+	)
+  );
 $RunescapeQuestHelper-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -27,33 +65,38 @@ $RunescapeQuestHelper-theme: mat-light-theme((
     accent: $RunescapeQuestHelper-accent,
     warn: $RunescapeQuestHelper-warn,
   )
+
 ));
+
+//$headline: mat@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Texturina:wght@500&display=swap');
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($RunescapeQuestHelper-theme);
 
-@include questlist-theme($RunescapeQuestHelper-theme);
+@include quest-table-theme($RunescapeQuestHelper-theme);
 /* You can add global styles to this file, and also import other style files */
 // $purple-grey:#968590;
 
- html{
-	background:url('https://i.pinimg.com/736x/9c/05/81/9c05811156998f1db99735c5ab070042--hand-painted-textures-hand-painted-rocks.jpg') repeat;
- }
+//  html{
+// 	background:url('https://i.pinimg.com/736x/9c/05/81/9c05811156998f1db99735c5ab070042--hand-painted-textures-hand-painted-rocks.jpg') repeat;
+//  }
 
- body{
- 	//background-color: $RunescapeQuestHelper-primary;
+//  body{
+//  	//background-color: $RunescapeQuestHelper-primary;
 	
- 	margin: auto;
- 	font-family: 'Montserrat', sans-serif;
- 	width: 80%;
- };
+//  	margin: auto;
+//  	font-family: 'Montserrat', sans-serif;
+//  	width: 80%;
+//  };
 
- html, body{
- 	height: 100%;
- }
+//  html, body{
+//  	height: 100%;
+//  }
 
- @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Texturina:wght@500&display=swap');
- html, body { height: 100%; }
- body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//  @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Texturina:wght@500&display=swap');
+//  html, body { height: 100%; }
+//  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

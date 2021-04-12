@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Quests } from './mockData/questsList';
-
 
 @Component({
   selector: 'app-root',
@@ -13,7 +9,6 @@ export class AppComponent {
   title = 'RSQuestHelper';
   username= "";
 
-  eligibleQuests = Quests;
   onGetUserStats(usernameInput: string){
     this.username = usernameInput;
   }
