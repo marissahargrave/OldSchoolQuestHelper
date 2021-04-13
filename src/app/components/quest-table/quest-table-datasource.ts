@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export interface QuestTableItem {
   index: number;
@@ -30,7 +30,9 @@ export class QuestTableDataSource extends DataSource<QuestTableItem> {
   data: QuestTableItem[] = [];
   paginator!: MatPaginator;
   sort!: MatSort;
-  private osrsQuestURL: string = "http://localhost:8124/questList";
+  private osrsQuestURL: string = "http://localhost:8124";
+  private osrsQuestListPath: string = "/questList";
+  private osrsUserStatPath: string = "/user"
 
 
   constructor(private http:HttpClient) {
@@ -45,16 +47,16 @@ export class QuestTableDataSource extends DataSource<QuestTableItem> {
   connect(): Observable<QuestTableItem[]> {
     const headers = new HttpHeaders({ 'responseType': 'text', 'content-type': 'text/html' });
       
-      console.log("SENDNG REQUEST");
+    console.log("SENDNG REQUEST");
       
-      this.http.get(this.osrsQuestURL).subscribe( 
+    this.http.get(this.osrsQuestURL+this.osrsQuestListPath).subscribe( 
       {next: data =>
-      {     
-            var responseData = <questResponse>data;
-            console.log("RESPONSE RECEIVED");
-            console.log(data);
-            this.convertDom(responseData.raw); 
-      },
+        {     
+              var responseData = <questResponse>data;
+              console.log("RESPONSE RECEIVED");
+              console.log(data);
+              this.convertDom(responseData.raw); 
+        },
       error: error => { console.log(error)}
       }
 
@@ -148,9 +150,31 @@ export class QuestTableDataSource extends DataSource<QuestTableItem> {
     
     this.data = questEntries;
   }
+
+  public markEligible(username: string): void{
+    const params = new HttpParams();
+    params.append('username', username);
+    
+    console.log("SENDNG REQUEST");
+      
+    this.http.get(this.osrsQuestURL+this.osrsUserStatPath, { params: params }).subscribe( 
+      {next: data =>
+        {     
+              //var responseData = <questResponse>data;
+              console.log("RESPONSE RECEIVED");
+              console.log(data);
+        },
+      error: error => { console.log(error)}
+      }
+
+      );
+  }
 }
+
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
 function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
+
+

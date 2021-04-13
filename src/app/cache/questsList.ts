@@ -1,4 +1,4 @@
-import { QuestTableItem } from '../quest-table/quest-table-datasource';
+import { QuestTableItem } from '../components/quest-table/quest-table-datasource';
 
 export const Quests: QuestTableItem[] = [
     // {"title":"A Shadow over Ashdale","status":"COMPLETED","difficulty":"novice","members":false,"questPoints":1,"userEligible":true},

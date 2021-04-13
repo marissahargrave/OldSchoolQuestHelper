@@ -1,6 +1,12 @@
+
+<app-header></app-header>
 <div class="main">
-    <h1>{{title}}</h1>
-    <div>
+    <mat-form-field>
+        <input matNativeControl placeholder="Username" #usernameInput 
+        (onblur)="onGetUserStats(usernameInput.value)"
+        (keyup.enter)= "onGetUserStats(usernameInput.value)">
+    </mat-form-field>
+    <!-- <div>
         <span>
           <label>User Name: 
             <input #usernameInput
@@ -8,6 +14,8 @@
               (keyup.enter)= "onGetUserStats(usernameInput.value)">
           </label>
         </span>
-      </div>
+      </div> -->
     <app-quest-table [username]="username"></app-quest-table>
+
+    
 </div>
