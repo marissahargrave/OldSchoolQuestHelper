@@ -1,0 +1,144 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import 'app/components/quest-table/quest-table.component.scss';
+@import 'app/components/header/header.component.scss';
+// Plus imports for other components in your app.
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Texturina:wght@500&display=swap');
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+$OldSchoolQuestHelperApp-typography: mat-typography-config(
+	$font-family: 'Montserrat, sans-serif'
+	
+);
+@include mat-core($OldSchoolQuestHelperApp-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$custom-mat-brown: (
+	50 : #e9e7e2,
+    100 : #c7c3b6,
+    200 : #a29b85,
+    300 : #7d7354,
+    400 : #615530,
+    500 : #45370b,
+    600 : #3e310a,
+    700 : #362a08,
+    800 : #2e2306,
+    900 : #1f1603,
+    A100 : #ffc05c,
+    A200 : #ffac29,
+    A400 : #f59600,
+    A700 : #db8600,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+  );
+$custom-mat-green: (
+    50 : #e7efe4,
+    100 : #c3d6bb,
+    200 : #9cbb8e,
+    300 : #749f61,
+    400 : #568b3f,
+    500 : #38761d,
+    600 : #326e1a,
+    700 : #2b6315,
+    800 : #245911,
+    900 : #17460a,
+    A100 : #94ff7d,
+    A200 : #6aff4a,
+    A400 : #40ff17,
+    A700 : #2dfc00,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+// The warn palette is optional (defaults to red).
+$OldSchoolQuestHelperApp-primary: mat-palette($custom-mat-brown);
+$OldSchoolQuestHelperApp-accent: mat-palette($custom-mat-brown, A100, A200, A700);
+$OldSchoolQuestHelperApp-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$OldSchoolQuestHelperApp-theme: mat-light-theme((
+  color: (
+    primary: $OldSchoolQuestHelperApp-primary,
+    accent: $OldSchoolQuestHelperApp-accent,
+    warn: $OldSchoolQuestHelperApp-warn,
+  )
+  
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($OldSchoolQuestHelperApp-theme);
+@include header-theme($OldSchoolQuestHelperApp-theme);
+@include quest-table-theme($OldSchoolQuestHelperApp-theme);
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+// $purple-grey:#968590;
+
+//  html{
+// 	background:url('https://i.pinimg.com/736x/9c/05/81/9c05811156998f1db99735c5ab070042--hand-painted-textures-hand-painted-rocks.jpg') repeat;
+//  }
+
+//  body{
+//  	//background-color: $OldSchoolQuestHelperApp-primary;
+	
+//  	margin: auto;
+//  	font-family: 'Montserrat', sans-serif;
+//  	width: 80%;
+//  };
+
+body{
+	margin: 0;
+}
+
+.main{
+	margin: 10px;
+}
+
+//  html, body{
+//  	height: 100%;
+//  }
+
+//  @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Texturina:wght@500&display=swap');
+//  html, body { height: 100%; }
+//  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+

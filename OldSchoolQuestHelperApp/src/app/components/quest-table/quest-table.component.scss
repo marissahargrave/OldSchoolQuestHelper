@@ -1,0 +1,63 @@
+  // .full-width-table {
+  //   width: 100%;
+  // }
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+@mixin quest-table-color($theme) {
+  // Extract the color configuration in case a theme has been passed.
+  // This allows consumers to either pass a theme object or a color configuration.
+  $config: mat-get-color-config($theme);
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  // Define any styles affected by the theme.
+  .full-width-table {
+    width: 100%;
+  }
+
+  tr.mat-row:hover{
+    background-color: mat-color($accent, 50);
+  }
+  tr.mat-header-row {
+    background-color: mat-color($accent, A400);
+    //color: mat-color($primary, 50);
+  }
+
+  .mat-sort-header-content {
+    color: #FFF;
+  }
+    // Use mat-color to extract individual colors from a palette.
+  //  background-color: mat-color($primary);
+    //border-color: mat-color($accent, A400);
+  //}
+}
+
+@mixin quest-table-typography($theme) {
+    // Extract the typography configuration in case a theme has been passed.
+    $config: mat-get-typography-config($theme);
+  
+    .mat-row {
+      font: {
+        family: mat-font-family($config, body-1);
+        size: mat-font-size($config, body-1);
+        weight: mat-font-weight($config, body-1);
+      }
+    }
+  }
+
+@mixin quest-table-theme($theme) {
+    // Extracts the color and typography configurations from the theme.
+    $color: mat-get-color-config($theme);
+    $typography: mat-get-typography-config($theme);
+
+    // Do not generate styles if configurations for individual theming
+    // systems have been explicitly set to `null`.
+    @if $color != null {
+        @include quest-table-color($color); 
+    }
+    @if $typography != null {
+        @include quest-table-typography($typography);
+    }
+}
