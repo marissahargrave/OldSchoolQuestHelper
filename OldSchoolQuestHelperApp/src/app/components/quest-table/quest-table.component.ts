@@ -24,9 +24,7 @@ export class QuestTableComponent implements AfterViewInit, OnInit {
 
   @Input() username!: string;
 
-  constructor(private http:HttpClient){
-
-  }
+  constructor(private http:HttpClient){  }
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['title', 'status', 'difficulty', 'members', 'length', 'questPoints','series'];
